@@ -2,7 +2,7 @@
 #include "asserttrue.h"
 #include <stdio.h>
 
-int main () {
+int main() {
 	int i;
 	printf("\n******************************************************************************************\n");
 	printf("                                  UNIT TEST 1: Baron Card                                 \n");
