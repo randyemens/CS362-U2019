@@ -3,6 +3,9 @@ CFLAGS= -Wall -fpic -coverage -lm -std=c99
 rngs.o: rngs.h rngs.c
 	gcc -c rngs.c -g  $(CFLAGS)
 
+asserttrue.o: asserttrue.h asserttrue.c
+	gcc -c asserttrue.c -g  $(CFLAGS)
+
 dominion.o: dominion.h dominion.c rngs.o
 	gcc -c dominion.c -g  $(CFLAGS)
 
@@ -29,6 +32,25 @@ runtests: testDrawCard
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
 
+randomtestcard1: randomtestcard1.c dominion.o rngs.o asserttrue.o dominion_helpers.h
+	gcc -o randomtestcard1 -g  randomtestcard1.c dominion.o rngs.o asserttrue.o $(CFLAGS)
+
+randomtestcard2: randomtestcard2.c dominion.o rngs.o asserttrue.o dominion_helpers.h
+	gcc -o randomtestcard2 -g  randomtestcard2.c dominion.o rngs.o asserttrue.o $(CFLAGS)
+
+randomtestcard3: randomtestcard3.c dominion.o rngs.o asserttrue.o dominion_helpers.h
+	gcc -o randomtestcard3 -g  randomtestcard3.c dominion.o rngs.o asserttrue.o $(CFLAGS)
+
+randomtestresults:
+	gcc -o randomtestcard1 dominion.c rngs.c randomtestcard1.c asserttrue.c $(CFLAGS)
+	randomtestcard1 >> randomtestresults.out
+	gcov dominion.c -b -f >> randomtestresults.out
+	gcc -o randomtestcard2 dominion.c rngs.c randomtestcard2.c asserttrue.c $(CFLAGS)
+	randomtestcard2 >> randomtestresults.out
+	gcov dominion.c -b -f >> randomtestresults.out
+	gcc -o randomtestcard3 dominion.c rngs.c randomtestcard3.c asserttrue.c $(CFLAGS)
+	randomtestcard3 >> randomtestresults.out
+	gcov dominion.c -b -f >> randomtestresults.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
