@@ -134,7 +134,11 @@ public class UrlValidator implements Serializable {
     private static final Pattern SCHEME_PATTERN = Pattern.compile(SCHEME_REGEX);
 
     // Drop numeric, and  "+-." for now
+<<<<<<< HEAD
     // TODO does not allow for optional userinfo. 
+=======
+    // TODO does not allow for optional userinfo.
+>>>>>>> aac010fe1c8a39c1cfa3af124bc0e727cceaf611
     // Validation of character set is done by isValidAuthority
     private static final String AUTHORITY_CHARS_REGEX = "\\p{Alnum}\\-\\."; // allows for IPV4 but not IPV6
     private static final String IPV6_REGEX = "[0-9a-fA-F:]+"; // do this as separate match because : could cause ambiguity with port prefix
@@ -188,8 +192,14 @@ public class UrlValidator implements Serializable {
 
     /**
      * If no schemes are provided, default to this set.
+<<<<<<< HEAD
      */
     private static final String[] DEFAULT_SCHEMES = {"http", "https", "ftp"}; // Must be lower-case
+=======
+     * -- BUG -- Removed "ftp" from DEFAULT_SCHEMES
+     */
+    private static final String[] DEFAULT_SCHEMES = {"http", "https"}; // Must be lower-case
+>>>>>>> aac010fe1c8a39c1cfa3af124bc0e727cceaf611
 
     /**
      * Singleton instance of this class with default schemes and options.
@@ -451,14 +461,22 @@ public class UrlValidator implements Serializable {
         try {
             URI uri = new URI(null,null,path,null);
             String norm = uri.normalize().getPath();
+<<<<<<< HEAD
             if (norm.startsWith("/../") // Trying to go via the parent dir 
+=======
+            if (norm.startsWith("/../") // Trying to go via the parent dir
+>>>>>>> aac010fe1c8a39c1cfa3af124bc0e727cceaf611
              || norm.equals("/..")) {   // Trying to go to the parent dir
                 return false;
             }
         } catch (URISyntaxException e) {
             return false;
         }
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> aac010fe1c8a39c1cfa3af124bc0e727cceaf611
         int slash2Count = countToken("//", path);
         if (isOff(ALLOW_2_SLASHES) && (slash2Count > 0)) {
             return false;
