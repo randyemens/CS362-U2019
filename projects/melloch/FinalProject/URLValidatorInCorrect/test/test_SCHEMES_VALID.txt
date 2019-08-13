@@ -1,0 +1,5 @@
+test://www.google.com/path.html
+valid://www.google.com/path.html
+schemes://www.google.com/path.html
+TEST://www.google.com/
+ValiD://www.google.com/

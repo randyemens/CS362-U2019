@@ -1,0 +1,5 @@
+invalid://www.google.com/path.html
+scheme://www.google.com/path.html
+https://www.nolongervalid.com/scheme.html
+http://nolongervalid.com/scheme.html
+ftp://nolongervalid.com/

@@ -1,0 +1,15 @@
+http://local
+https://local
+ftp://local
+http://valid
+http://local/
+http://local/valid
+http://local/valid/file.txt
+http://local1
+http://local/1
+http://local/valid1
+http://local/valid/file1.txt
+http://local
+http://local/@
+http://local/valid!
+http://local/valid/file_name.doc

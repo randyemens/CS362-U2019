@@ -1,0 +1,3 @@
+http://google.com/path.html
+http://google.com/path//valid
+http://google.com/path//valid.html
