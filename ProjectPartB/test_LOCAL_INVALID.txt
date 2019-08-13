@@ -1,0 +1,10 @@
+http://local.
+http://local//
+http://local/invalid//
+http://local/invalid//file.txt
+http://test
+http://first.in-valid
+http://local@
+http://local$
+http://local%
+http://local@/invalid.file
