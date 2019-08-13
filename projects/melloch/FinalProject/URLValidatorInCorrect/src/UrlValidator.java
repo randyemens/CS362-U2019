@@ -414,7 +414,7 @@ public class UrlValidator implements Serializable {
             String hostLocation = authorityMatcher.group(PARSE_AUTHORITY_HOST_IP);
             // check if authority is hostname or IP address:
             // try a hostname first since that's much more likely
-            DomainValidator domainValidator = DomainValidator.getInstance(isOn(ALLOW_LOCAL_URLS));
+            DomainValidator domainValidator = DomainValidator.getInstance(isOff(ALLOW_LOCAL_URLS)); //ADDED UNIT TEST BUG
             if (!domainValidator.isValid(hostLocation)) {
                 // try an IPv4 address
                 InetAddressValidator inetAddressValidator = InetAddressValidator.getInstance();
@@ -478,7 +478,7 @@ public class UrlValidator implements Serializable {
 
 >>>>>>> aac010fe1c8a39c1cfa3af124bc0e727cceaf611
         int slash2Count = countToken("//", path);
-        if (isOff(ALLOW_2_SLASHES) && (slash2Count > 0)) {
+        if (isOff(ALLOW_2_SLASHES) && (slash2Count >= 0)) { //ADDED UNIT TEST BUG
             return false;
         }
 
